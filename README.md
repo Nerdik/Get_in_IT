@@ -1,4 +1,4 @@
-# Uranium table verifier
+# Uranium table unifier
 ## Описание
 ### Основной функционал
 
