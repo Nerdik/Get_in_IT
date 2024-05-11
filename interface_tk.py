@@ -14,7 +14,7 @@ root.resizable(width=False, height=False)
 # Функция загрузки файла
 def get_file():
     pass
-
+#жижа
 
 # Окно блока для загрузки файла
 frame_file = Frame(root, bg='#0080ff')
