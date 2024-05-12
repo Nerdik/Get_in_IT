@@ -1,4 +1,5 @@
 from tkinter import *
+from output import get_file,output_file
 
 root = Tk()
 
@@ -10,20 +11,17 @@ root.geometry('800x400')
 # Неизменяемость размеров окна
 root.resizable(width=False, height=False)
 
-
-# Функция загрузки файла
-def get_file():
-    pass
-#жижа
-
 # Окно блока для загрузки файла
 frame_file = Frame(root, bg='#0080ff')
 frame_file.place(relx=0, rely=0, relwidth=1, relheight=0.2)
 
 # Кнопка загрузки файла
 btn_file = Button(frame_file, text='Загрузить файл', command=get_file)
-btn_file.pack(anchor=N, pady=20)
+btn_file.pack(anchor=N, pady=10)
 
+# Кнопка выгрузки файла
+btn_file2 = Button(frame_file, text='Выгрузить файл', command=output_file)
+btn_file2.pack(anchor=S, pady=0)
 
 # Окно для блока выбора команд
 frame_commands = Frame(root, bg='#0080ff', borderwidth=2, relief="solid")
