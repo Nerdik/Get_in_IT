@@ -10,10 +10,11 @@ import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
 
+
 def get_user_response():
     global user_response02
-    user_response02="Хочу таблицу с столбцами Часы, Диаметр и глубина спуска"
-    user_data02=get_user_data()
+    user_response02 = gigaField.get()
+    user_data02 = get_user_data()
     Get_Answer_LLM(user_request01=user_response02,user_data01=user_data02)   
     
 root = Tk()
@@ -23,31 +24,41 @@ root.title('Uranium table unifier')
 root.wm_attributes('-alpha', 1)
 root.geometry('800x800')
 
+
 # Неизменяемость размеров окна
 root.resizable(width=False, height=False)
 
 # Окно блока для загрузки файла
-frame_file = Frame(root, bg='#0080ff')
-frame_file.place(relx=0, rely=0, relwidth=1, relheight=0.4)
+frame_file = Frame(root, bg='#0080ff', borderwidth=2, relief="solid")
+frame_file.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.18)
+
+# Луйбл MVP
+label_table = Label(frame_file, text='MVP mode', bg='#0080ff')
+label_table.grid(row=0, column=0, padx=5, pady=0, sticky=W)
 
 # Кнопка загрузки файла
 btn_file = Button(frame_file, text='Загрузить файл', command=get_file)
-btn_file.pack(anchor=N, pady=10)
+btn_file.grid(row=0, column=1, padx=5, pady=10, sticky=W)
+
+# Поле запроса к LLM
+gigaField = Entry(frame_file, bg='#00c0ff', width=60)
+gigaField.grid(row=1, column=0, padx=5, pady=10, sticky=E)
+gigaField.insert(0, 'Введите запрос Гигачату и нажмите "Запросить Гигачат"')
 
 # Кнопка запроса у LLM
 btn_file3 = Button(frame_file, text='Запросить Гигачат', command=get_user_response) 
-btn_file3.pack(anchor=S, pady=10)
+btn_file3.grid(row=1, column=1, padx=5, pady=10, sticky=W)
 
 # Кнопка выгрузки файла
 btn_file2 = Button(frame_file, text='Выгрузить файл', command=output_file)
-btn_file2.pack(anchor=S, pady=0)
+btn_file2.grid(row=2, column=1, padx=5, pady=10, sticky=W)
 
 # Окно для блока выбора команд
 frame_commands = Frame(root, bg='#0080ff', borderwidth=2, relief="solid")
-frame_commands.place(relx=0.02, rely=0.2, relwidth=0.47, relheight=0.65)
+frame_commands.place(relx=0.02, rely=0.22, relwidth=0.47, relheight=0.5)
 
 # Наиемнование блока
-label_commands = Label(frame_commands, text='Выберите команды', bg='#0080ff')
+label_commands = Label(frame_commands, text='Выберите команды # В MVP не работает!', bg='#0080ff')
 label_commands.pack(anchor=N)
 
 # Чекбокс 
@@ -63,10 +74,10 @@ for i in range(len(checkbox)):
 
 # Окно для блока пользовательской таблицы
 frame_table = Frame(root, bg='#0080ff', borderwidth=2, relief="solid")
-frame_table.place(relx=0.51, rely=0.2, relwidth=0.47, relheight=0.65)
+frame_table.place(relx=0.51, rely=0.22, relwidth=0.47, relheight=0.5)
 
 # Наиемнование блока
-label_table = Label(frame_table, text='Пользовательская таблица', bg='#0080ff')
+label_table = Label(frame_table, text='Пользовательская таблица # В MVP не работает!', bg='#0080ff')
 label_table.grid(row=0, column=0, padx=5, pady=0, sticky=E)
 
 # Текстовые поля Наименование столбца и кнопки записи
